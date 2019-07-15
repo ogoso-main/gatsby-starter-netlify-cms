@@ -60,10 +60,10 @@ const BlogPost = ({ data }) => {
   return (
     <Layout>
       <BlogPostTemplate
-        image={post.frontmatter.images}
         content={post.html}
         contentComponent={HTMLContent}
         description={post.frontmatter.description}
+        image={post.frontmatter.images}
         helmet={
           <Helmet titleTemplate="%s | Blog">
             <title>{`${post.frontmatter.title}`}</title>
