@@ -60,6 +60,7 @@ const BlogPost = ({ data }) => {
   return (
     <Layout>
       <BlogPostTemplate
+        image={post.frontmatter.images}
         content={post.html}
         contentComponent={HTMLContent}
         description={post.frontmatter.description}
@@ -78,6 +79,22 @@ const BlogPost = ({ data }) => {
     </Layout>
   )
 }
+
+const Meta = ({ post }) => {
+  const origin = 'https://shibe97.com';
+
+  return (
+    <Helmet
+      title={`${post.frontmatter.title} | Blog`}
+      meta={[
+        { name: 'description', content: post.frontmatter.description },
+        { property: 'og:title', content: post.frontmatter.title },
+        { property: 'og:description', content: post.frontmatter.description },
+        { property: 'og:image', content: `${origin}${post.frontmatter.image}` },
+      ]}
+    />
+  );
+};
 
 BlogPost.propTypes = {
   data: PropTypes.shape({
